@@ -8,16 +8,16 @@
     <bpmn2:endEvent id="EndEvent_1" name="Loan Request&#10;Processed">
       <bpmn2:incoming>Flow_1jv72tn</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:userTask id="Task_0dfv74n" name="Check the request" camunda:assignee="demo">
-      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
-      <bpmn2:outgoing>Flow_061lx4i</bpmn2:outgoing>
-    </bpmn2:userTask>
     <bpmn2:sequenceFlow id="Flow_061lx4i" sourceRef="Task_0dfv74n" targetRef="validateTheRequest" />
     <bpmn2:sequenceFlow id="Flow_1jv72tn" sourceRef="validateTheRequest" targetRef="EndEvent_1" />
     <bpmn2:serviceTask id="validateTheRequest" name="Validate the request" camunda:expression="${mainDelegate.validateTheRequest(execution)}">
       <bpmn2:incoming>Flow_061lx4i</bpmn2:incoming>
       <bpmn2:outgoing>Flow_1jv72tn</bpmn2:outgoing>
     </bpmn2:serviceTask>
+    <bpmn2:userTask id="Task_0dfv74n" name="Check the request">
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_061lx4i</bpmn2:outgoing>
+    </bpmn2:userTask>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="loanApproval">
@@ -29,7 +29,7 @@
         <di:waypoint x="364" y="122" />
         <di:waypoint x="430" y="122" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_3" targetElement="UserTask_0k9otqc_di">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_3" targetElement="Activity_0aryxx1_di">
         <di:waypoint x="206" y="122" />
         <di:waypoint x="264" y="122" />
         <bpmndi:BPMNLabel>
@@ -48,11 +48,11 @@
           <dc:Bounds x="587" y="140" width="69" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_0k9otqc_di" bpmnElement="Task_0dfv74n">
-        <dc:Bounds x="264" y="82" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14hbeov_di" bpmnElement="validateTheRequest">
         <dc:Bounds x="430" y="82" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0aryxx1_di" bpmnElement="Task_0dfv74n">
+        <dc:Bounds x="264" y="82" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
